@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="FronTalk: Benchmarking Front-End Development as Conversational Code Generation with Multi-Modal Feedback">
+    <meta name="keywords" content="frontalk">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FronTalk: Benchmarking Front-End Development as Conversational Code Generation with Multi-Modal
+        Feedback</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+    <!-- <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+  /Users/panlu/Library/Mobile Documents/com~apple~CloudDocs/ImageMath/visual-mathqa-server/data_final/images
+      gtag('js', new Date());
+
+      gtag('config', 'G-PYVRSFMDRL');
+    </script> -->
+
+    <link rel="icon" href="./static/images/icon.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/leaderboard.css">
+
+    <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+    <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/explorer-index.js"></script>
+    <script src="./static/js/question_card.js"></script>
+
+    <script src="./static/js/leaderboard_testmini.js"></script>
+    <script src="./data/results/output_folders.js" defer></script>
+    <script src="./data/results/model_scores.js" defer></script>
+
+    <script src="./visualizer/data/data_public.js" defer></script>
+</head>
+<body>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title is-bold">
+                        <img src="static/images/icon.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+                        <span style="vertical-align: middle">FronTalk</span>
+                    </h1>
+                    <h2 class="subtitle is-4 publication-subtitle">
+                        Benchmarking Front-End Development as Conversational Code Generation with Multi-Modal Feedback
+                    </h2>
+                    <div class="is-size-5 publication-authors">
+            <span class="author-block">
+	      <a href="https://shirley-wu.github.io/">Xueqing Wu</a><sup><span style="color:#6fbf73">1</span></sup>,</span>
+                        <span class="author-block">
+	      <a href="https://www.linkedin.com/in/yuheng-ding/">Zihan Xue</a><sup><span
+                                style="color:#6fbf73">1</span></sup>,</span>
+                        <span class="author-block">
+              <a href="https://wadeyin9712.github.io/">Da Yin</a><sup style="color:#ffac33">2</sup>,</span>
+                        <span class="author-block">
+              <a href="https://bingxuanli.com/">Shuyan Zhou</a><sup style="color:#ed4b82">3</sup>,</span>
+                        <span class="author-block">
+              <a href="https://web.cs.ucla.edu/~kwchang/">Kai-Wei Chang</a><sup style="color:#6fbf73">1</sup>,</span>
+                        <span class="author-block">
+              <a href="https://violetpeng.github.io/">Nanyun Peng</a><sup
+                                style="color:#6fbf73">1</sup>,</span>
+                        <span class="author-block">
+                  <a href="https://lupantech.github.io/">Yeming Wen</a><sup style="color:#ffac33">2</sup></span>
+                        <br/>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup style="color:#6fbf73">1</sup>University of California, Los Angeles,</span>
+                        &nbsp&nbsp<span class="author-block"><sup style="color:#ffac33">2</sup>Meta,</span>
+                        &nbsp&nbsp<span class="author-block"><sup style="color:#ed4b82">3</sup>Duke University</span>
+                    </div>
+
+                    <!-- <div class="is-size-5 publication-authors">
+                        <span class="author-block"><b style="color:red">🎉 Accepted to CVPR 2025! 🎉</b></span>
+                            </div>
+                </div></div> -->
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+
+                    <span class="link-block">
+                <a href="https://github.com/shirley-wu/frontalk/blob/main/static/preprint.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+                            <!-- <span class="link-block">
+                        <a href="https://arxiv.org/abs/2412.02172"
+                           class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                              <i class="ai ai-arxiv"></i>
+                          </span>
+                          <span>arXiv</span>
+                        </a>
+                      </span> -->
+                            <span class="link-block">
+                <a href="https://github.com/shirley-wu/frontalk"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+                            <span class="link-block">
+                <a href="https://huggingface.co/datasets/xqwu/FronTalk"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:15px">📁</p>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="margin-top: -150px; margin-bottom: -100px;">
+        <div class="columns is-centered m-6">
+            <div class="column is-full has-text-centered content">
+                <div id="teaser-carousel" class="carousel results-carousel">
+                    <div class="box m-5">
+                        <div class="content has-text-centered">
+                            <img src="static/images/teaser.jpg" width="90%"/>
+                            <p><br/>Focusing on the front-end development task, <b>FronTalk</b> explores a novel setting
+                                with multi-turn interactions and multi-modal user feedback.</p>
+                        </div>
+                    </div>
+                    <div class="box m-5">
+                        <div class="content has-text-centered">
+                            <img src="static/images/user_sim.jpg" width="84%"/>
+                            <p>The textual and visual instructions are produced by <b>user simulators</b> based on
+                                pre-defined user intents. The simulator <b>contextualizes</b> the user intent based on
+                                the website generated in prior turns.</p>
+                        </div>
+                    </div>
+                    <div class="box m-5">
+                        <div class="content has-text-centered">
+                            <img src="static/images/ours.jpg" width="80%"/>
+                            <p> Overview of <b>AceCoder</b>. AceCoder first generates a candidate website, collects
+                                agent-based critique by
+                                interacting with the website and verifying the implementation of all prior instructions,
+                                and then use the critique to
+                                enhance user instructions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Introduction</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We present FronTalk, a benchmark for front-end code generation to pioneer the study of a unique
+                        interaction dynamic: <b>conversational code generation with multi-modal feedback</b>. We curate
+                        a collection of 100
+                        multi-turn dialogues derived from real-world websites. Each turn features a textual instruction
+                        and an equivalent visual instruction, each
+                        representing the same user intent. For evaluation, we propose a
+                        novel <b>agent-based framework</b> using a web agent to simulate users and explore the
+                        website, and thus measuring both functional correctness and user experience.</p>
+                    <p>Evaluation of 20 models reveals two key challenges: (1) a significant
+                        <b>forgetting issue</b> where models overwrite previously implemented features, resulting in
+                        task failures,
+                        and (2) a persistent challenge in <b>interpreting visual feedback</b>, especially for
+                        open-source vision-language
+                        models (VLMs).</p>
+                    <p>We propose a strong baseline to tackle the forgetting issue with <b>AceCoder</b>, a
+                        method that critiques the implementation of every past instruction using an autonomous web
+                        agent.
+                        This approach significantly reduces forgetting to nearly zero and improves the performance by up
+                        to
+                        <b>9.3% (56.0%→65.3%)</b>.</p>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="columns is-centered">
+            <div class="column is-full has-text-centered content">
+                <h2 class="title is-3" id="leaderboard_test">Leaderboard</h2>
+                <p>Click <b><u>metrics</u></b> to sort the leaderboard.</p>
+                <div class="content">
+                    <table class="js-sort-table" id="results">
+                        <thead>
+                        <tr>
+                            <th rowspan="2" class="js-sort-number"><strong><u>#</u></strong></th>
+                            <th rowspan="2" class="js-sort-none"><strong>Model</strong></th>
+                            <th colspan="2" class="js-sort-none"><strong>Single-Turn</strong></th>
+                            <th colspan="3" class="js-sort-none"><strong>Multi-Turn (Textual)</strong></th>
+                            <th colspan="3" class="js-sort-none"><strong>Multi-Turn (Visual)</strong></th>
+                        </tr>
+                        <tr style="background:#ddd">
+                            <th class="js-sort-number"><u>PR↑</u></th>
+                            <th class="js-sort-number"><u>UX↑</u></th>
+                            <th class="js-sort-number"><u>🏅PR↑</u></th>
+                            <th class="js-sort-number"><u>FR↓</u></th>
+                            <th class="js-sort-number"><u>UX↑</u></th>
+                            <th class="js-sort-number"><u>PR↑</u></th>
+                            <th class="js-sort-number"><u>FR↓</u></th>
+                            <th class="js-sort-number"><u>UX↑</u></th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td>1</td>
+                            <td><b class="best-score-text">Gemini-2.5-Pro 🥇</b></td>
+                            <td>57.2</td>
+                            <td>56.8</td>
+                            <td><b class="best-score-text">75.0</b></td>
+                            <td>4.5</td>
+                            <td>71.0</td>
+                            <td>68.7</td>
+                            <td>6.2</td>
+                            <td>73.8</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><b class="best-score-text">Qwen3-Coder-480B 🥈</b></td>
+                            <td>67.0</td>
+                            <td>64.0</td>
+                            <td><b class="best-score-text">62.5</b></td>
+                            <td>15.4</td>
+                            <td>62.3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><b class="best-score-text">GPT-OSS-20B 🥉</b></td>
+                            <td>64.3</td>
+                            <td>68.5</td>
+                            <td><b class="best-score-text">61.6</b></td>
+                            <td>15.8</td>
+                            <td>71.5</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Qwen3-Coder-30B</td>
+                            <td>54.1</td>
+                            <td>49.8</td>
+                            <td>61.0</td>
+                            <td>8.6</td>
+                            <td>54.3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Qwen3-8B</td>
+                            <td>54.3</td>
+                            <td>45.8</td>
+                            <td>59.9</td>
+                            <td>13.9</td>
+                            <td>57.8</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Qwen3-235B</td>
+                            <td>62.9</td>
+                            <td>57.8</td>
+                            <td>59.0</td>
+                            <td>20.6</td>
+                            <td>61.3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>GPT-OSS-120B</td>
+                            <td>68.0</td>
+                            <td>73.5</td>
+                            <td>57.9</td>
+                            <td>9.2</td>
+                            <td>66.8</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>GPT-4o</td>
+                            <td>51.4</td>
+                            <td>50.0</td>
+                            <td>56.0</td>
+                            <td>21.4</td>
+                            <td>55.0</td>
+                            <td>55.0</td>
+                            <td>8.0</td>
+                            <td>52.5</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Qwen3-VL-30B</td>
+                            <td>54.6</td>
+                            <td>50.0</td>
+                            <td>54.1</td>
+                            <td>4.7</td>
+                            <td>50.3</td>
+                            <td>39.1</td>
+                            <td>12.3</td>
+                            <td>35.8</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Qwen2.5-VL-72B</td>
+                            <td>43.0</td>
+                            <td>33.8</td>
+                            <td>52.8</td>
+                            <td>17.8</td>
+                            <td>46.5</td>
+                            <td>44.6</td>
+                            <td>15.4</td>
+                            <td>37.3</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Claude-4-Sonnet</td>
+                            <td>77.5</td>
+                            <td>71.8</td>
+                            <td>45.5</td>
+                            <td>22.8</td>
+                            <td>60.8</td>
+                            <td>59.3</td>
+                            <td>10.6</td>
+                            <td>64.8</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Gemma3-12B</td>
+                            <td>47.1</td>
+                            <td>43.5</td>
+                            <td>43.8</td>
+                            <td>30.3</td>
+                            <td>43.0</td>
+                            <td>30.4</td>
+                            <td>22.1</td>
+                            <td>38.5</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Gemma3-27B</td>
+                            <td>36.7</td>
+                            <td>37.2</td>
+                            <td>37.2</td>
+                            <td>42.1</td>
+                            <td>39.5</td>
+                            <td>35.5</td>
+                            <td>16.7</td>
+                            <td>41.0</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Ovis2.5-9B</td>
+                            <td>51.5</td>
+                            <td>49.3</td>
+                            <td>35.3</td>
+                            <td>12.2</td>
+                            <td>34.3</td>
+                            <td>27.0</td>
+                            <td>10.5</td>
+                            <td>39.5</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>GLM-4.5V-108B</td>
+                            <td>24.4</td>
+                            <td>23.5</td>
+                            <td>35.2</td>
+                            <td>9.8</td>
+                            <td>40.5</td>
+                            <td>7.9</td>
+                            <td>27.7</td>
+                            <td>7.8</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>Qwen2.5-VL-32B</td>
+                            <td>44.5</td>
+                            <td>38.0</td>
+                            <td>33.2</td>
+                            <td>46.9</td>
+                            <td>37.5</td>
+                            <td>36.9</td>
+                            <td>25.7</td>
+                            <td>36.5</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>Llama-3.3-70B</td>
+                            <td>38.4</td>
+                            <td>35.8</td>
+                            <td>28.9</td>
+                            <td>46.3</td>
+                            <td>40.8</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>DeepSeek-R1-685B</td>
+                            <td>60.0</td>
+                            <td>53.5</td>
+                            <td>24.7</td>
+                            <td>34.5</td>
+                            <td>40.0</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>Qwen2.5-VL-7B</td>
+                            <td>24.5</td>
+                            <td>19.5</td>
+                            <td>23.7</td>
+                            <td>28.2</td>
+                            <td>26.8</td>
+                            <td>16.1</td>
+                            <td>39.3</td>
+                            <td>17.0</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>GLM-4.1V-Thinking-9B</td>
+                            <td>36.6</td>
+                            <td>32.3</td>
+                            <td>18.2</td>
+                            <td>5.8</td>
+                            <td>41.5</td>
+                            <td>15.3</td>
+                            <td>4.3</td>
+                            <td>32.0</td>
+                        </tr>
+                    </table>
+                    <div>
+                        <p>🚨 To submit your results to the leaderboard, please send to <a
+                                href="xueqing.wu@cs.ucla.edu">this email</a> with the zip file of your outputs.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DATASET SECTION -->
+<section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+        <h1 class="title is-1">
+            <span style="vertical-align: middle">Task and Dataset</span>
+        </h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <!-- <div class="column is-full-width has-text-centered"> -->
+            <div class="column is-four-fifths">
+                <div class="content has-text-justified">
+                    <p>
+                        <b>FronTalk</b> aims to pioneer the study of a unique
+                        interaction dynamic: conversational code generation with multi-modal feedback. Each conversation
+                        in the dataset consists of a sequence of
+                        <b>user intents</b>, where each intent is further paired with a set of <b>test cases</b>.
+                        In inference, at each turn, we employ a <b>user simulator</b> to transform the static intent
+                        into a
+                        context-aware instruction (textual or visual) based on the website generated in prior turns.
+                    </p>
+                    <p>
+                        We curate 100 conversations containing 1,000 turns of user intents from real websites in C4
+                        dataset, spanning
+                        diverse domains such as e-commerce platforms, financial service sites, and digital art
+                        portfolios. The test cases are first automatically generated by LLMs and then manually refined.
+                        We curate 3,676 test cases in total.
+                        You can download the dataset on <a href="https://huggingface.co/datasets/xqwu/FronTalk">Huggingface
+                        Dataset</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered" style="display: flex; align-items: center;">
+            <div class="column" style="flex: 0 0 35%;">
+                <div class="content has-text-centered">
+                    <img src="static/images/inference.png" style="max-width: 100%;"/>
+                    <p>Inference pipeline.</p>
+                </div>
+            </div>
+            <div class="column" style="flex: 0 0 45%;">
+                <div class="content has-text-centered">
+                    <img src="static/images/distribution.png" style="max-width: 100%;"/>
+                    <p>Website topic distribution.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="columns is-centered has-text-centered">
+            <!-- <div class="column is-full-width has-text-centered"> -->
+            <div class="column is-four-fifths">
+                <div class="content has-text-justified">
+                    <p>To evaluate the quality of the generated websites, we calculate two metrics: (1) <b>pass rate
+                        (PR)</b>, measuring the instruction following aspect, calculated
+                        based on the predefined test cases; and (2) <b>usability (UX)</b>, measuring the user experience
+                        aspect, defined as how easily a new
+                        user can learn to navigate the website and accomplish tasks. To measure the forgetting issue, we
+                        additionally calculate <b>forgetting rate (FR)</b> that
+                        measures how much functionality correctly implemented in prior turns is lost in the final
+                        output.</p>
+                    <p>We employ an <b>interactive web agent</b> that evaluates the website through direct interaction.
+                        For pass rate, it acts as an informed expert, using the full context to verify a test
+                        case. For usability, it simulates a naive user that explores the site and attempts self-proposed
+                        tasks. We
+                        adapt the <a href="https://github.com/MinorJerry/WebVoyager">WebVoyager</a> framework and
+                        additionally enhance it with a suite of <i>image manipulation tools</i> to enhance its visual
+                        perception.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RESULTS SECTION -->
+<section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+        <h1 class="title is-1">Analysis</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="margin-top: -80px; margin-bottom: -40px;">
+        <div class="columns is-centered m-6">
+            <div class="column is-full has-text-centered content">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="box m-5">
+                        <div class="content has-text-centered">
+                            <img src="static/images/visual_errors.jpg" width="60%"/>
+                            <p>Focusing on instances where a model fails a visual instruction but succeeds on its
+                                textual
+                                equivalent, we categorize the errors into three types: (1) <b>Failure to implement
+                                    implicit functionalities</b>, the most common error, where VLMs replicate the UI
+                                layout but fail to
+                                implement the underlying functionalities; (2) <b>Missing text annotations</b>, where
+                                model miss some text annotations in the image, especially in densely annotated images;
+                                and (3) <b>Misinterpretation of visual clues</b>, the least common error, which
+                                occurs when visual clues are slightly ambiguous</p>
+                        </div>
+                    </div>
+                    <div class="box m-5">
+                        <div class="content has-text-centered">
+                            <img src="static/images/users.png" width="40%"/>
+                            <p>In addition to users that express their intents through detailed, explicit instructions,
+                                we aim to simulate more diverse interaction patterns between users and LLMs. So, we
+                                simulate two additional types of users: (1) <b>clarification-only user</b> that responds
+                                to direct questions but provides no unsolicited details, and (2) <b>preference-only
+                                    user</b> that verbalizes only minimal requirements but instead reveals intent
+                                through choices among model-generated options. The degraded performance with both user
+                                types highlights models limited capability to actively elicit and infer user intent,
+                                directly affecting the task completion pass rate and the usability of generated
+                                websites.</p>
+                        </div>
+                    </div>
+                    <div class="box m-5">
+                        <div class="content has-text-centered">
+                            <img src="static/images/alignment.png" width="50%"/>
+                            <p><b>Human alignment for the automatic evaluation of pass rate</b>. Our evaluator better
+                                aligns with human preference compared with image-based evaluator, code-based evaluator,
+                                and an ablated version without image manipulation tools (w/o IM tools).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero is-light is-small">
+    <div class="hero-body has-text-centered">
+        <h1 class="title is-1"><span class="mathvista">AceCoder</span>: Improved Baseline</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered has-text-centered">
+            <!-- <div class="column is-full-width has-text-centered"> -->
+            <div class="column is-four-fifths"> <!-- style="max-width: 50%;"> -->
+                <div class="content has-text-justified">
+                    <div class="column is-full has-text-centered content">
+                        <img src="static/images/alg.png" style="max-width: 100%;"/>
+                    </div>
+                    <p>First, AceCoder generates a candidate website (L1). A
+                        web agent then interacts with this site to verify that all features – from both current and past
+                        instructions –
+                        are correctly implemented (L3-L8). The gathered critiques are used to augment the original
+                        instructions, and this enhanced prompt is fed back to the model to regenerate an improved
+                        website (L10).</p>
+                </div>
+
+                <div class="container">
+                    <div class="columns is-centered" style="display: flex; align-items: center;">
+                        <div class="column" style="flex: 0 0 56%;">
+                            <div class="content has-text-centered">
+                                <img src="static/images/result1.png" style="max-width: 100%;"/>
+                                <p><b>Main results of AceCoder</b> with both textual (T) and visual (V) instructions.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column" style="flex: 0 0 44%;">
+                            <div class="content has-text-centered">
+                                <img src="static/images/result2.png" style="max-width: 100%;"/>
+                                <p><b>Ablation study of AceCoder</b>, evaluated on GPT-4o with textual instructions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title is-3 has-text-centered">BibTeX</h2>
+        <pre><code>@article{wu2025frontalk,
+    title={FronTalk: Benchmarking Front-End Development as Conversational Code Generation with Multi-Modal Feedback},
+    author={Wu, Xueqing and Xue, Zihan and Yin, Da and Zhou, Shuyan and Chang, Kai-Wei and Peng, Nanyun and Wen, Yeming},
+    year={2025},
+    month={oct},
+    url={https://github.com/shirley-wu/frontalk}
+}</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+        <div class="column is-8">
+            <div class="content">
+                <p>
+                    This website is website adapted from <a href="https://nerfies.github.io/">Nerfies</a> and <a
+                        href="https://mathvista.github.io/">MathVista</a>, licensed under a
+                    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+                        Attribution-ShareAlike 4.0 International License</a>. Icon image from <a
+                        href="https://www.flaticon.com/authors/freepik">Freepik</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</footer>
+
+</body>
+</html>
